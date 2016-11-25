@@ -1,0 +1,11 @@
+{
+  "name": "skioembeddableplayer",
+  "private": true,
+  "dependencies": {
+    "SoundManager2": "soundmanager2#*"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
