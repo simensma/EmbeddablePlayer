@@ -1,4 +1,10 @@
-(function () {
+var player = (function (http) {
+
+	var self = {
+		initialized: false,
+		view: initializeView()
+	};
+
 	function parseGetParams() {
 		if(!location.search){ return null; }
 
@@ -12,22 +18,21 @@
 		var username = params.username;
 		var slug = params.slug;
 
-		get(projectUrl(username, slug), projectLoaded);
+		http.get(projectUrl(username, slug), projectLoaded);
+
+		soundManager.setup({
+		   useFastPolling: true,
+		   useHighPerformance: true,
+		});
 	}
 
 	function projectLoaded(project) {
-		console.log("PROJECT LOADED");
-		console.log(project);
-		post(playerUrl(project.id), {slug: project.slug}, playerUrlLoaded);
-
-
+		self.project = project;
+		http.post(playerUrl(project.id), {slug: project.slug}, playerUrlLoaded);
 	}
 
 	function playerUrlLoaded(data) {
-		console.log("PlayerURLLOADED");
-		console.log(data);
-
-
+		self.audioUrl = data['audioUrl'];
 	}
 
 
@@ -39,31 +44,65 @@
 		return 'https://api-test.skiomusic.com/projects/' + id + '/play_preview'
 	}
 
-	function get(url, callback) {
-	    var request = new XMLHttpRequest();
-	    request.onreadystatechange = function() { 
-	        if (request.readyState == 4 && request.status == 200)
-	            callback(JSON.parse(request.responseText));
-	    }
-	    request.open("GET", url, true); // true for asynchronous 
-	    request.send(null);
+	function initializeView() {
+		return {
+			playBtn: document.querySelector('.playBtn')
+		};
 	}
 
-	function post(url, data, callback) {
-	    var request = new XMLHttpRequest();
-	    request.onreadystatechange = function() { 
-	        if (request.readyState == 4 && request.status == 200)
-	            callback(JSON.parse(request.responseText));
-	    }
+	function createAndPlaySound() {
+		self.audio = soundManager.createSound({
+			id: self.project.id,
+			url: self.audioUrl,
+			autoPlay: true,
+			autoLoad: true,
+			whileplaying: function () {
+				console.log('PLAYING ' + self.audio.position);
+			},
+			whileloading: function () {
+				console.log('LOADING ' + self.audio.durationEstimate)
+			},
+			onload: function () {
+				console.log('LOADED')
+			}
 
-	    request.open("POST", url, true); // true for asynchronous 
+		});
 
-	    request.setRequestHeader('Content-type', 'application/json');
+		self.initialized = true;
+	}
 
-	    request.send(JSON.stringify(data));
+	function play() {
+		self.view.playBtn.textContent = 'Pause';
+		self.view.playBtn.classList.remove('paused');
+
+		if(!self.audio || self.audio.playState === 0 || self.audio.paused === true || !self.initialized) {
+			return doPlay()
+		}
+
+		pause();
+	}
+
+	function doPlay() {
+		if(!self.initialized) {
+			return createAndPlaySound();
+		}
+
+		self.audio.play();
 	}
 
 
+	function pause() {
+		self.view.playBtn.classList.add('paused');
 
-	init();
-})();
+		self.view.playBtn.textContent = 'Play';
+
+		self.audio.pause();
+	}
+
+	return {
+		play: play,
+		pause: pause,
+		init: init
+	};
+
+})(http);
