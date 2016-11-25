@@ -2,10 +2,14 @@
   "name": "skioembeddableplayer",
   "private": true,
   "dependencies": {
-    "SoundManager2": "soundmanager2#*"
+    "SoundManager2": "soundmanager2#*",
+    "audioplayer": "https://github.com/skiomusic/audioplayer.git#^0.2.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0"
+  },
+  "resolutions": {
+    "audioplayer": "^0.2.0"
   }
 }

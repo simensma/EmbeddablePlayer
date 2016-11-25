@@ -1,4 +1,4 @@
-var player = (function (http) {
+var player = (function (http, waveform) {
 
 	var self = {
 		initialized: false,
@@ -29,11 +29,13 @@ var player = (function (http) {
 	function projectLoaded(project) {
 		self.project = project;
 		http.post(playerUrl(project.id), {slug: project.slug}, playerUrlLoaded);
-		
+
 		console.log(project)
 		self.view.artistText.textContent = project.name
 		self.view.artistArt.src= "https://res.cloudinary.com/skiomusic-com/image/upload/c_fill,d_project_default_v2.png,h_100,w_100/v1/projects/"+project.id+"/project_image"
 		self.view.artistText.href = "http://test.skiomusic.com/noizehazard/gang-signs-mate"
+
+		waveform.renderWaveform(project);
 	}
 
 	function playerUrlLoaded(data) {
@@ -65,7 +67,9 @@ var player = (function (http) {
 			autoPlay: true,
 			autoLoad: true,
 			whileplaying: function () {
-				console.log('PLAYING ' + self.audio.position);
+				waveform.seek(self.audio.position/self.audio.durationEstimate);
+
+				console.log('PLAYING ' + (self.audio.position/self.audio.durationEstimate));
 			},
 			whileloading: function () {
 				console.log('LOADING ' + self.audio.durationEstimate)
@@ -113,4 +117,4 @@ var player = (function (http) {
 		init: init
 	};
 
-})(http);
+})(http, waveform);

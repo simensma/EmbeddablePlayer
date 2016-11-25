@@ -7,7 +7,7 @@ var http = (function () {
 	            callback(JSON.parse(request.responseText));
 	    }
 
-	    request.open("GET", url, true); // true for asynchronous 
+	    request.open('GET', url, true); // true for asynchronous 
 	    request.send(null);
 	}
 
@@ -19,7 +19,7 @@ var http = (function () {
 	            callback(JSON.parse(request.responseText));
 	    }
 
-	    request.open("POST", url, true); // true for asynchronous 
+	    request.open('POST', url, true); // true for asynchronous 
 
 	    request.setRequestHeader('Content-type', 'application/json');
 

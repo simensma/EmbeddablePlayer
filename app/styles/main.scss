@@ -12,3 +12,11 @@ $icon-font-path: '../fonts/';
 
 /* when the song is paused */
 .playBtn.paused { background-image: url("/images/play_button.png") }
+
+.waveform canvas{
+		height: 20px;
+
+	canvas: {
+		height: 20px;
+	}
+}
