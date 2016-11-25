@@ -19,13 +19,13 @@
     <!-- endbuild -->
     
 	<!-- Google Fonts  -->
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,200,100,600,700,800" rel="stylesheet" type="text/css">
 	
   </head>
   <body style="
   	font-family: 'Open Sans','Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;
-    font-weight: 200;
-    style: normal;
+    font-weight: 100;
+    font-style: normal;
     line-height: 1;
     -webkit-font-smoothing: antialiased;">
 	
@@ -33,28 +33,34 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<div class="outer_container" style ="width: 400px; height: 100px;  display: flex; background-color: #e8e8e8; " >
+<div class="outer_container" style ="width: 400px; height: 100px;  display: flex; background-color: #e8e8e8;
+border-radius: 10px; 
+-moz-border-radius:10px; 
+-webkit-border-radius: 10px; 
+border: 1px solid #e8e8e8;
+
+ " >
 	
 	<div class="image_container" style="width: 100px; height: 100%;">
-		<img class="artistArt" src=""/>
+		<a class="trackLink" href=""><img class="artistArt" src=""/></a>
 	</div><!-- image_container-->
 	
 	
 	<div class="data_container" style="height: 100px; width: 75%;   ">
 		
-		<div class="data_top" style="border: 1px dashed #c8c8c8; /* background-color: #000 */ height:50px; display: flex; ">
+		<div class="data_top" style=" height:50px; display: flex; justify-content: space-between; ">
 			
-			<div class="data_top_left" style="width: 70%; height: 100%; display:flex; ">
+			<div class="data_top_left" style=" height: 100%; display:flex; ">
 				<div class="play_button" style="height: 100%; ">
 					<div class="playBtn paused" onclick="player.play()"></div>
 				</div><!-- play_button -->
-			<div style="padding: 5px;" ><a class="artistText" href="" ></a></div>
+			<div style="padding: 10px;" ><a class="artistText" href="" ></a></div>
 			
 				
 			</div><!-- data_top_left -->
 			
-			<div class="data_top_right" style="width: 30%; height: 100%;  ">
-				<img src="/images/skio_logo.png" style="width: 50px; height; 50px; "/>
+			<div class="data_top_right" style=" height: 100%; display: flex; padding: 5px;">
+				<a href="http://www.skiomusic.com"><img src="/images/skio_logo.png"  style="width: 50px; height; 50px; "/></a>
 			</div><!-- data_top_left -->
 		
 		</div><!-- data_top-->

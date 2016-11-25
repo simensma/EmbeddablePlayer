@@ -34,6 +34,7 @@ var player = (function (http, waveform) {
 		self.view.artistText.textContent = project.name
 		self.view.artistArt.src= "https://res.cloudinary.com/skiomusic-com/image/upload/c_fill,d_project_default_v2.png,h_100,w_100/v1/projects/"+project.id+"/project_image"
 		self.view.artistText.href = "http://test.skiomusic.com/noizehazard/gang-signs-mate"
+		self.view.trackLink.href = "http://test.skiomusic.com/noizehazard/gang-signs-mate"
 
 		waveform.renderWaveform(project);
 	}
