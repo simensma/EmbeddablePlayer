@@ -1,6 +1,4 @@
 var waveform = (function (http, Waveform) {
-	console.log('WAVEFORM');
-	console.log(Waveform)
 
 	var self = {};
 
@@ -16,7 +14,8 @@ var waveform = (function (http, Waveform) {
 	function addWaveform(waveformJson) {
 
 		var viewElement = document.querySelector('.waveform')
-		self.waveform = new Waveform(viewElement, waveformJson.samples, getWaveformOptions());
+		console.log(getWaveformOptions(waveformJson))
+		self.waveform = new Waveform(viewElement, waveformJson.samples, getWaveformOptions(waveformJson));
 		console.log(waveformJson)
 	}
 
@@ -25,8 +24,9 @@ var waveform = (function (http, Waveform) {
         return {
             barWidth: BAR_WIDTH,
             barPadding: BAR_PADDING,
+            waveform: waveformJson,
             resizeWithWindow: true,
-            mirrored: false
+            mirrored: true
         };
     }
 
@@ -39,8 +39,13 @@ var waveform = (function (http, Waveform) {
     	self.waveform.seek(position);
     }
 
+    function getWaveform() {
+    	return self.waveform
+    }
+
 	return {
 		renderWaveform: renderWaveform,
-		seek: seek
+		seek: seek,
+		waveform: getWaveform
 	};
 })(http, Waveform);
