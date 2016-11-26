@@ -14,9 +14,7 @@ var waveform = (function (http, Waveform) {
 	function addWaveform(waveformJson) {
 
 		var viewElement = document.querySelector('.waveform')
-		console.log(getWaveformOptions(waveformJson))
 		self.waveform = new Waveform(viewElement, waveformJson.samples, getWaveformOptions(waveformJson));
-		console.log(waveformJson)
 	}
 
 
