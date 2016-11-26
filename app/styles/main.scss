@@ -21,13 +21,67 @@ body {
 
 .dataTopLeft { height: 100%; display:flex; }
 
-.dataTopRight { height: 100%; display: flex; padding: 5px; }
+.dataTopRight { height: 100%; display: flex; }
 
 .dataTop { height:50px; display: flex; justify-content: space-between; }
 
-.dataContainer { height: 100px; width: 75%; }
+.dataContainer { height: 100px; width: 75%; padding: 7px;}
 
 .imageContainer { width: 100px; height: 100%; }
+.playBtn {
+	width: 35px;
+	height: 35px;
+	background-color: #00aeea;
+
+	border-radius: 4rem;
+    transition: background .3s;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.playBtn:before, .playBtn:after {
+    content: '';
+    position: relative;
+    display: block;
+}
+
+
+.playBtn.default:before {
+	width: 14%;
+    height: 50%;
+    margin-right: 3px;
+    background-color: white;
+}
+
+.playBtn.default:after {
+	width: 14%;
+    height: 50%;
+
+    background-color: white;
+}
+
+/* when the song is paused */
+.playBtn.paused:before {
+
+	border-right: 32px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 32px solid #fff;
+
+    width: 0;
+    height: 0;
+    left: 30%;
+    border-right: 16px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #fff;
+    margin-left: 0;
+    margin-top: 0;
+
+
+	
+}
 
 .logo { height: 37px; }
 
@@ -36,19 +90,12 @@ body {
 	height: 100px;  
 	display: flex; 
 	background-color: #e8e8e8;
-	border-radius: 10px; 
-	-moz-border-radius:10px; 
-	-webkit-border-radius: 10px; 
-	border: 1px solid #e8e8e8; 
+	border-radius: 3px; 
+	border: 1px solid #eae1e1; 
 }
 
-
-.playBtn { width: 50px; height: 50px; background-image: url("/images/pause_button.png"); }
-
-.playBtn.paused { background-image: url("/images/play_button.png") }
-
 .waveform canvas{
-		height: 20px;
+	height: 20px;
 
 	canvas: {
 		height: 20px;

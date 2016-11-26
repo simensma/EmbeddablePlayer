@@ -53,12 +53,25 @@ var player = (function (http, waveform) {
 		
 	}
 
+	function formatMilliseconds(milliseconds) {
+	   // var minutes = Math.floor(milliseconds / 60000);
+	   // milliseconds = milliseconds % 60000;
+	   // var seconds = Math.floor(milliseconds / 1000);
+
+	   // return 
+	   //    (minutes < 10 ? '0' : '') + minutes + ':' +
+	   //    (seconds < 10 ? '0' : '') + seconds;
+	}
+
+
 	function initializeView() {
 		return {
 			playBtn: document.querySelector('.playBtn'),
 			artistText: document.querySelector('.artistText'),
 			artistArt: document.querySelector('.artistArt'),
-			trackLink: document.querySelector('.trackLink')
+			trackLink: document.querySelector('.trackLink'),
+			timeLabel: document.querySelector('.timeLabel'),
+			infoLabel: document.querySelector('.infoLabel')
 		};
 	}
 
@@ -70,6 +83,8 @@ var player = (function (http, waveform) {
 			autoLoad: true,
 			whileplaying: function () {
 				waveform.seek(self.audio.position/self.audio.durationEstimate);
+
+				self.view.timeLabel.textContent = formatMilliseconds(self.audio.position)
 			}
 		});
 
@@ -79,6 +94,7 @@ var player = (function (http, waveform) {
 	function play() {
 		initializeTimelineClickHandler()
 		self.view.playBtn.classList.remove('paused');
+		self.view.playBtn.classList.add('default');
 
 		if(!self.audio || self.audio.playState === 0 || self.audio.paused === true || !self.initialized) {
 			return doPlay()
@@ -98,6 +114,7 @@ var player = (function (http, waveform) {
 
 	function pause() {
 		self.view.playBtn.classList.add('paused');
+		self.view.playBtn.classList.remove('default');
 
 		self.audio.pause();
 	}
