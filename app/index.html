@@ -22,53 +22,42 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,200,100,600,700,800" rel="stylesheet" type="text/css">
 	
   </head>
-  <body style="
-  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;
-    font-weight: 100;
-    font-style: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;">
+  <body>
 	
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<div class="outer_container" style ="width: 400px; height: 100px;  display: flex; background-color: #e8e8e8;
-border-radius: 10px; 
--moz-border-radius:10px; 
--webkit-border-radius: 10px; 
-border: 1px solid #e8e8e8;
-
- " >
+<div class="outerContainer">
 	
-	<div class="image_container" style="width: 100px; height: 100%;">
+	<div class="imageContainer">
 		<a class="trackLink" href=""><img class="artistArt" src=""/></a>
 	</div><!-- image_container-->
 	
 	
-	<div class="data_container" style="height: 100px; width: 75%;   ">
+	<div class="dataContainer">
 		
-		<div class="data_top" style=" height:50px; display: flex; justify-content: space-between; ">
+		<div class="dataTop">
 			
-			<div class="data_top_left" style=" height: 100%; display:flex; ">
-				<div class="play_button" style="height: 100%; ">
+			<div class="dataTopLeft">
+				<div class="playButton">
 					<div class="playBtn paused" onclick="player.play()"></div>
 				</div><!-- play_button -->
-			<div style="padding: 10px;" ><a class="artistText" href="" ></a></div>
+			<div class ="artistTextWrapper"><a class="artistText" href=""></a></div>
 			
 				
 			</div><!-- data_top_left -->
 			
-			<div class="data_top_right" style=" height: 100%; display: flex; padding: 5px;">
-				<a href="http://www.skiomusic.com"><img src="/images/skio_logo.png"  style="width: 50px; height; 50px; "/></a>
+			<div class="dataTopRight">
+				<a href="http://www.skiomusic.com"><img class="logo" src="/images/skio_logo.png"/></a>
 			</div><!-- data_top_left -->
 		
 		</div><!-- data_top-->
 	
-		<div class="data_bottom" style="width: 100%; /* background-color: #c8c8c8; */ display: flex;">
+		<div class="dataBottom">
 			
-      <div style="height: 40px; width: 100%;" id="waveform">
-			<div class="waveform"  style="height: 100%; width: 100%;" >
+      <div class ="waveformWrapper">
+			<div class="waveform">
 			</div><!-- waveform -->
       </div>
 		</div><!-- data_bottom-->
@@ -79,10 +68,12 @@ border: 1px solid #e8e8e8;
 	
 </div><!-- outer_container-->
 	
-
+	
 	
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <!-- GA code  -->
+  <!-- UA-56528710-1 -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -91,6 +82,7 @@ border: 1px solid #e8e8e8;
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
+	
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
