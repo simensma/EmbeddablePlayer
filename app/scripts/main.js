@@ -30,11 +30,13 @@ var player = (function (http, waveform) {
 		self.project = project;
 		http.post(playerUrl(project.id), {slug: project.slug}, playerUrlLoaded);
 
-		console.log(project)
+		var link = "http://test.skiomusic.com/"+project.profile.username +"/"+ project.slug;
+
 		self.view.artistText.textContent = project.name
 		self.view.artistArt.src= "https://res.cloudinary.com/skiomusic-com/image/upload/c_fill,d_project_default_v2.png,h_100,w_100/v1/projects/"+project.id+"/project_image"
-		self.view.artistText.href = "http://test.skiomusic.com/noizehazard/gang-signs-mate"
-		self.view.trackLink.href = "http://test.skiomusic.com/noizehazard/gang-signs-mate"
+		self.view.artistText.href = link;
+		self.view.cta.href = link;
+		self.view.trackLink.href = link; 
 
 		waveform.renderWaveform(project);
 	}
@@ -71,7 +73,8 @@ var player = (function (http, waveform) {
 			artistArt: document.querySelector('.artistArt'),
 			trackLink: document.querySelector('.trackLink'),
 			timeLabel: document.querySelector('.timeLabel'),
-			infoLabel: document.querySelector('.infoLabel')
+			infoLabel: document.querySelector('.infoLabel'),
+			cta: document.querySelector('.cta')
 		};
 	}
 
