@@ -3,14 +3,48 @@ $icon-font-path: '../fonts/';
 // bower:scss
 // endbower
 
+.artistText { color: #4f4f4f; text-decoration: none;  }
 
+.artistTextWrapper { padding: 10px; }
+
+body {
+  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;
+    font-weight: 100;
+    font-style: normal;
+	
+    line-height: 1;
+	margin: 0;
+    -webkit-font-smoothing: antialiased; 
+}
+
+.dataBottom { width: 100%; display: flex; }
+
+.dataTopLeft { height: 100%; display:flex; }
+
+.dataTopRight { height: 100%; display: flex; padding: 5px; }
+
+.dataTop { height:50px; display: flex; justify-content: space-between; }
+
+.dataContainer { height: 100px; width: 75%; }
+
+.imageContainer { width: 100px; height: 100%; }
+
+.logo { height: 37px; }
+
+.outerContainer { 
+	width: 400px; 
+	height: 100px;  
+	display: flex; 
+	background-color: #e8e8e8;
+	border-radius: 10px; 
+	-moz-border-radius:10px; 
+	-webkit-border-radius: 10px; 
+	border: 1px solid #e8e8e8; 
+}
 
 
 .playBtn { width: 50px; height: 50px; background-image: url("/images/pause_button.png"); }
 
-
-
-/* when the song is paused */
 .playBtn.paused { background-image: url("/images/play_button.png") }
 
 .waveform canvas{
@@ -20,3 +54,6 @@ $icon-font-path: '../fonts/';
 		height: 20px;
 	}
 }
+.trackLink {  }
+.waveform { height: 100%; width: 100%; }
+.waveformWrapper { height: 40px; width: 100%; }
