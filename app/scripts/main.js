@@ -56,13 +56,11 @@ var player = (function (http, waveform) {
 	}
 
 	function formatMilliseconds(milliseconds) {
-	   // var minutes = Math.floor(milliseconds / 60000);
-	   // milliseconds = milliseconds % 60000;
-	   // var seconds = Math.floor(milliseconds / 1000);
+	   var minutes = Math.floor(milliseconds / 60000);
+	   milliseconds = milliseconds % 60000;
+	   var seconds = Math.floor(milliseconds / 1000);
 
-	   // return 
-	   //    (minutes < 10 ? '0' : '') + minutes + ':' +
-	   //    (seconds < 10 ? '0' : '') + seconds;
+	   return [minutes, seconds];
 	}
 
 
@@ -72,22 +70,36 @@ var player = (function (http, waveform) {
 			artistText: document.querySelector('.artistText'),
 			artistArt: document.querySelector('.artistArt'),
 			trackLink: document.querySelector('.trackLink'),
-			timeLabel: document.querySelector('.timeLabel'),
+			secondsLabel: document.querySelector('.secondsLabel'),
+			minutesLabel: document.querySelector('.minutesLabel'),
+			totalTimeLabel: document.querySelector('.totalTimeLabel'),
 			infoLabel: document.querySelector('.infoLabel'),
+			time: document.querySelector('.time'),
 			cta: document.querySelector('.cta')
 		};
 	}
 
 	function createAndPlaySound() {
+		self.view.time.classList.add('visible');
+
 		self.audio = soundManager.createSound({
-			id: self.project.id,
+			id: 'remixcomps-' + self.project.id,
 			url: self.audioUrl,
 			autoPlay: true,
 			autoLoad: true,
 			whileplaying: function () {
 				waveform.seek(self.audio.position/self.audio.durationEstimate);
 
-				self.view.timeLabel.textContent = formatMilliseconds(self.audio.position)
+				console.log(self.audio.position)
+				console.log(formatMilliseconds(self.audio.position))
+
+				var time = formatMilliseconds(self.audio.position);
+
+				var totalTime = formatMilliseconds(self.audio.durationEstimate);
+
+				self.view.secondsLabel.textContent = time[1];
+				self.view.minutesLabel.textContent = time[0];
+				self.view.totalTimeLabel.textContent = totalTime[0] + ":" + totalTime[1];
 			}
 		});
 
