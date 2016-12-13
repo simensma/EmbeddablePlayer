@@ -27,60 +27,76 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class="outerContainer">
+    	<a class="trackLink" target="_blank"><img class="artistArt"/></a>
 
-<div class="outerContainer">
-	
-	<div class="imageContainer">
-		<a class="trackLink" target="_blank"><img class="artistArt" src=""/></a>
-    <div class="cta-wrapper">
-      <a class="cta button" target="_blank">Get Stems</a>
+    	<div class="dataContainer">
+    		<div class="dataTop row">
+    			<h1><a class="artistText" target="_blank"></a></h1>
+    		</div>
+
+    		<div class="dataMiddle row">
+          <div class="playButton">
+            <div class="playBtn paused"></div>
+          </div>
+
+          <div class="waveformWrapper" id="waveform">
+      			<div class="waveform"></div>
+            <div class="infoLabel">90 sec. preview</div>
+          </div>
+    		</div>
+
+        <div class="dataBottom row">
+            <a href="http://www.skiomusic.com" target="_blank">
+              <div class="logo logo-small">
+                <?xml version="1.0" encoding="utf-8"?>
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 56.5 30" style="enable-background:new 0 0 56.5 30;" xml:space="preserve">
+                <path d="M42.5,0.1c-6.1-0.5-11.6,2.7-14.4,7.7l0,0l-6.5,11.4l-3.9-2l-3.5,6.1c-4.6-0.4-8-4.4-7.6-9
+                  c0.4-4.6,4.4-8,8.9-7.6c2.4,0.2,4.4,1.4,5.8,3.1l3.4-6.1c-2.3-2.1-5.3-3.4-8.7-3.7C8-0.6,0.7,5.5,0.1,13.8
+                  C-0.6,22,5.5,29.3,13.8,29.9c6.1,0.5,11.6-2.7,14.4-7.7c0,0,0,0,0,0l6.5-11.4l3.9,2L42,6.7c4.6,0.4,8,4.4,7.6,8.9
+                  c-0.4,4.6-4.4,8-8.9,7.6c-2.4-0.2-4.4-1.4-5.8-3.1l-3.4,6.1c2.3,2.1,5.3,3.4,8.7,3.7c8.3,0.7,15.5-5.5,16.2-13.7
+                  C56.9,8,50.8,0.7,42.5,0.1"/>
+                </svg>
+              </div>
+              <div class="logo logo-normal">
+                <?xml version="1.0" encoding="utf-8"?>
+                <!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 187 30" style="enable-background:new 0 0 187 30;" xml:space="preserve">
+                <path d="M119.2,9.3h2.8l4.5,7l4.5-7h2.8v14.8h-2.6V13.5l-4.7,7h-0.1l-4.6-6.9v10.6h-2.6C119.2,24.2,119.2,9.3,119.2,9.3
+                  z"/>
+                <path d="M137.3,17.8V9.3h2.6v8.4c0,2.7,1.4,4.2,3.7,4.2s3.7-1.4,3.7-4.1V9.3h2.6v8.4c0,4.4-2.5,6.6-6.4,6.6
+                  C139.8,24.3,137.3,22.1,137.3,17.8z"/>
+                <path d="M152.6,21.9l1.6-1.9c1.4,1.2,2.9,1.9,4.7,1.9c1.6,0,2.6-0.8,2.6-1.9l0,0c0-1.1-0.6-1.6-3.3-2.3
+                  c-3.1-0.8-4.9-1.7-4.9-4.4l0,0c0-2.5,2.1-4.3,5-4.3c2.2,0,3.9,0.7,5.4,1.9l-1.4,2c-1.3-1-2.7-1.5-4-1.5c-1.5,0-2.4,0.8-2.4,1.8l0,0
+                  c0,1.1,0.7,1.6,3.5,2.3c3.1,0.8,4.7,1.9,4.7,4.3l0,0c0,2.8-2.2,4.4-5.3,4.4C156.5,24.3,154.3,23.5,152.6,21.9z"/>
+                <path d="M167.2,9.3h2.6v14.8h-2.6V9.3z"/>
+                <path d="M173.1,16.7L173.1,16.7c0-4.2,3.1-7.7,7.6-7.7c2.7,0,4.4,1,5.8,2.3l-1.7,1.9c-1.2-1.1-2.4-1.8-4.1-1.8
+                  c-2.8,0-4.9,2.3-4.9,5.2l0,0c0,2.9,2,5.2,4.9,5.2c1.8,0,3-0.7,4.2-1.9l1.7,1.7c-1.5,1.6-3.2,2.6-6,2.6
+                  C176.3,24.3,173.1,21,173.1,16.7z"/>
+                <path d="M42.5,0.1c-6.1-0.5-11.6,2.7-14.4,7.7l0,0l-6.5,11.4l-3.9-2l-3.5,6.1c-4.6-0.4-8-4.4-7.6-9s4.4-8,8.9-7.6
+                  c2.4,0.2,4.4,1.4,5.8,3.1l3.4-6.1C22.4,1.6,19.4,0.3,16,0C8-0.6,0.7,5.5,0.1,13.8C-0.6,22,5.5,29.3,13.8,29.9
+                  c6.1,0.5,11.6-2.7,14.4-7.7l0,0l6.5-11.4l3.9,2L42,6.7c4.6,0.4,8,4.4,7.6,8.9c-0.4,4.6-4.4,8-8.9,7.6c-2.4-0.2-4.4-1.4-5.8-3.1
+                  l-3.4,6.1c2.3,2.1,5.3,3.4,8.7,3.7c8.3,0.7,15.5-5.5,16.2-13.7C56.9,8,50.8,0.7,42.5,0.1"/>
+                <g>
+                  <path d="M64.5,21.8l1.6-1.8c1.4,1.2,2.8,1.9,4.6,1.9c1.6,0,2.6-0.8,2.6-1.8v0c0-1.1-0.6-1.6-3.3-2.2
+                    c-3.1-0.8-4.9-1.7-4.9-4.4v0c0-2.5,2.1-4.3,5-4.3c2.1,0,3.8,0.7,5.3,1.8l-1.4,2c-1.3-1-2.6-1.5-4-1.5c-1.5,0-2.4,0.8-2.4,1.7v0
+                    c0,1.1,0.7,1.6,3.5,2.3c3.1,0.8,4.7,1.9,4.7,4.3v0c0,2.8-2.2,4.4-5.2,4.4C68.4,24.2,66.3,23.4,64.5,21.8z"/>
+                  <path d="M78.9,9.3h2.6v7.4l7-7.4h3.2l-6.1,6.3L92,24h-3.1l-5-6.6l-2.3,2.4V24h-2.6V9.3z"/>
+                  <path d="M94.3,9.3h2.6V24h-2.6V9.3z"/>
+                  <path d="M100.2,16.7L100.2,16.7c0-4.2,3.2-7.6,7.7-7.6s7.7,3.4,7.7,7.6v0c0,4.1-3.2,7.6-7.7,7.6S100.2,20.8,100.2,16.7
+                    z M112.8,16.7L112.8,16.7c0-2.9-2.1-5.3-5-5.3s-5,2.3-5,5.2v0c0,2.9,2.1,5.2,5,5.2S112.8,19.5,112.8,16.7z"/>
+                </g>
+                </svg>
+              </div>
+            </a>
+            <span class="info"></span>
+            <a class="cta button" target="_blank"></a>
+        </div>
+    	</div>
     </div>
-	</div><!-- image_container-->
-	
-	
-	<div class="dataContainer">
-		
-		<div class="dataTop">
-			
-			<div class="dataTopLeft">
-				<div class="playButton">
-					<div class="playBtn paused" onclick="player.play()"></div>
-				</div><!-- play_button -->
-			<div class ="artistTextWrapper"><a class="artistText" target="_blank"></a></div>
-			
-				
-			</div><!-- data_top_left -->
-			
-			<div class="dataTopRight">
-				<a href="http://www.skiomusic.com"><img class="logo" src="/images/skio_logo.png"/></a>
-			</div><!-- data_top_left -->
-		
-		</div><!-- data_top-->
-	
-		<div class="dataBottom">
-			
-      <div class="waveformWrapper" id="waveform">
-			<div class="waveform">
-			</div><!-- waveform -->
-
-      <div class="time"><span class="minutesLabel"></span>:<span class="secondsLabel"></span> / <span class="totalTimeLabel"></span></div>
-      <div class="infoLabel"></div>
-
-      </div>
-		</div><!-- data_bottom-->
-	
-	
-	
-	</div><!-- data_container-->
-	
-</div><!-- outer_container-->
-	
-	
-	
     
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <!-- GA code  -->
-  <!-- UA-56528710-1 -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -90,25 +106,26 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 	
+    <!-- build:js scripts/main.js -->
 
-    <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/SoundManager2/script/soundmanager2.js"></script>
     <script src="/bower_components/audioplayer/waveform.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
-    
 
-    <!-- build:js scripts/main.js -->
+
     <script src="scripts/utils.js"></script>
-    <script src="scripts/http.js"></script>
-    <script src="scripts/waveformconfig.js"></script>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/view.js"></script>
+
+    <script src="scripts/http.js"></script>
+    <script src="scripts/waveform.js"></script>
+    <script src="scripts/player.js"></script>
     <!-- endbuild -->
 
     <script>
-      player.init();
+      var config = utils.parseGetParams();
+      new player(new view(config), config.username, config.slug);
     </script>
   </body>
 </html>

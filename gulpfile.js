@@ -9,6 +9,16 @@ const runSequence = require('run-sequence');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+const cdnify = require('gulp-cdnify');
+
+
+const environments = require('gulp-environments');
+
+var prod = environments.make("prod");
+var test = environments.make("test");
+
+var cdn = prod()? "https://embed.skiomusic.com/" : test()? "https://embed.skiomusic.com/" : "http://localhost:9000"
+
 var dev = true;
 
 gulp.task('styles', () => {
@@ -59,6 +69,9 @@ gulp.task('html', ['styles', 'scripts'], () => {
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(cdnify({
+      base: cdn
+    }))
     .pipe(gulp.dest('dist'));
 });
 

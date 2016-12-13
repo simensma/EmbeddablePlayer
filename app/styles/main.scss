@@ -1,44 +1,145 @@
 $icon-font-path: '../fonts/';
 
-// bower:scss
-// endbower
 
-.artistText { color: #4f4f4f; text-decoration: none;  }
-
-.artistTextWrapper { padding: 10px; }
-
-body {
-  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;
-    font-weight: 100;
+@mixin font-light {
+    font-weight: 300;
     font-style: normal;
-	
-    line-height: 1;
-	margin: 0;
-    -webkit-font-smoothing: antialiased; 
 }
 
-.dataBottom { width: 100%; display: flex; }
+@mixin font-regular {
+    font-weight: 400;
+    font-style: normal;
+}
 
-.dataTopLeft { height: 100%; display:flex; }
+$gray-10:       #191919;
+$gray-20:       #333333;
+$gray-30:       #4C4C4C;
+$gray-40:       #666666;
+$gray-50:       #7f7f7f;
+$gray-60:       #999999;
+$gray-70:       #b2b2b2;
+$gray-80:       #cccccc;
+$gray-90:       #e5e5e5;
+$gray-100:      #ffffff;
 
-.dataTopRight { height: 100%; display: flex; }
+$max-player-height: 140px;
+$min-player-height: 90px;
 
-.dataTop { height:50px; display: flex; justify-content: space-between; }
+$small-player-width: 290px;
+$tiny-player-width: 215px;
+$tiny-tiny-player-width: 180px;
 
-.dataContainer { height: 100px; width: 75%; padding: 7px;}
+$playBtnSize: 25px;
+$button-color: #00aeea;
+$button-color-hover: #009bd1;
+$button-font-color: #fff;
+$play-button-action-color: #fff;
+$font-size: 0.625em;
 
-.imageContainer { width: 100px; height: 100%; position: relative; }
+
+
+
+body, html {
+    height: 100%;
+}
+
+// bower:scss
+// endbower
+body {
+  	font-family: 'Open Sans','Helvetica Neue',Helvetica,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    margin: 0;
+
+    @include font-regular();
+
+
+    text-rendering: optimizeLegibility;
+    text-rendering: geometricPrecision;
+    font-smooth: always;
+    font-smoothing: antialiased;
+
+    max-height: $max-player-height;
+    min-height: $min-player-height; 
+}
+
+h1 {
+    font-size: 0.75rem;
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+
+    @include font-light();
+}
+
+h1 a {
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+.info {
+    font-size: $font-size;
+
+    @media(max-width: 375px) {
+        display: none;
+    }
+}
+
+
+.logo {
+    svg {
+        height: 0.8rem;
+    }
+}
+
+.dataMiddle {
+    display: flex;
+    width: 100%;
+}
+
+.dataBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.trackLink {
+    height: 100%;
+
+    @media (max-width: $small-player-width) {
+        display: none;
+    }
+}
+
+.dataContainer {
+    padding: 8px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
 .playBtn {
-	width: 35px;
-	height: 35px;
-	background-color: #00aeea;
-
+	width: $playBtnSize;
+	height: $playBtnSize;
+    margin-right: 0.5rem;
 	border-radius: 4rem;
     transition: background .3s;
     display: flex;
     justify-content:center;
     align-items: center;
+    cursor: pointer;
+    background-color: $button-color;
+
 }
+
 
 .playBtn:before, .playBtn:after {
     content: '';
@@ -48,126 +149,167 @@ body {
 
 
 .playBtn.default:before {
-	width: 14%;
+	width: 13%;
     height: 50%;
     margin-right: 3px;
-    background-color: white;
+    background-color: $play-button-action-color;
 }
 
 .playBtn.default:after {
-	width: 14%;
+	width: 13%;
     height: 50%;
 
-    background-color: white;
+    background-color: $play-button-action-color;
 }
 
 /* when the song is paused */
 .playBtn.paused:before {
-
-	border-right: 32px solid transparent;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 32px solid #fff;
-
     width: 0;
     height: 0;
     left: 30%;
-    border-right: 16px solid transparent;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 16px solid #fff;
+    border-right: ($playBtnSize*16/35) solid transparent;
+    border-top: ($playBtnSize*10/35) solid transparent;
+    border-bottom: ($playBtnSize*10/35) solid transparent;
+    border-left: ($playBtnSize*16/35) solid $play-button-action-color;
     margin-left: 0;
     margin-top: 0;
-
-
-	
 }
 
-
 a.button {
-    padding: 7px;
-    background: rgba(51, 51, 51, 0.92);
-    color: #fff;
-    display: block;
-    border: 0;
+    padding: .35em;
+    font-size: $font-size;
+    background: $button-color;
+    color: $button-font-color;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    display: inline-block;
+    width: auto;
+    margin: 0;
     text-align: center;
     line-height: 1;
     cursor: pointer;
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
-    font-size: .8rem;
+    transition: background .25s ease-out;
+    vertical-align: middle;
     border-radius: .25rem;
-    text-decoration: none;}
-
-.cta {
-    position: absolute;
-    top: 0;
-    margin-left: 11px;
-    margin-right: 0;
-    margin-top: 40px;
-    opacity: 0;
-    font-weight: bolder;
-    transition: opacity 0.2s ease-in;
-
+    text-decoration: none;
 }
 
 
-.cta-wrapper {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.cta-wrapper:hover {
-    display: block;
-
-    .cta {
-        opacity: 1;
-        display: block;
-    }
-}
-
-.time {
-    display: none;
+.infoLabel {
     position: absolute;
     top: 50%;
     right: 0;
-    background: rgba(0,0,0,.8);
-    color: #fff;
     position: absolute;
     z-index: 12;
     padding: 4px 6px;
-    font-size: 12px;
+    font-size: 0.563rem; // 9px
+    font-weight: 400;
 
-    .minutesLabel, .secondsLabel {
-        color: #00aeea;
+    @media(max-width: $tiny-player-width) {
+        display: none;
     }
+}
 
-    &.visible {
+.logo-small {
+    display: none;
+}
+
+@media (max-width: $tiny-tiny-player-width) {
+    .logo-small {
         display: block;
     }
-}
 
-.logo { height: 37px; }
+    .logo-normal {
+        display: none;
+    }
+}
 
 .outerContainer { 
-	width: 100%; 
-	height: 100px;  
 	display: flex; 
-	background-color: #e8e8e8;
-	border-radius: 3px; 
-	border: 1px solid #eae1e1;
+	border-radius: 1px; 
     margin: 0 auto;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.waveform canvas{
-	height: 20px;
-
-	canvas: {
-		height: 20px;
-	}
+.waveform {
+    height: 1.625rem;
+    width: 100%;
 }
-.trackLink {  }
-.waveform { height: 100%; width: 100%; }
-.waveformWrapper { height: 40px; width: 100%; position:relative; }
+
+.waveformWrapper {
+    width: 100%;
+    position:relative;
+}
+
+.artistArt {
+    height: 100%;
+}
+
+///////// THEME DEFINITION ////////////
+
+@mixin theme($font-color, $player-border, $bg-color, $info-label-font-color, $info-label-background, $info-color, $logo-color) {
+    color: $font-color;
+
+    .outerContainer {
+        background: $bg-color;
+    }
+
+    .infoLabel {
+        background: $info-label-background;
+        color: $info-label-font-color;
+    }
+
+    .outerContainer {
+        border: 1px solid $player-border;
+    }
+
+    .info {
+        color: $info-color;
+    }
+
+    .trackLink {
+        border-right: 1px solid $player-border;
+    }
+
+    .logo {
+        color: $logo-color;
+
+        svg {
+            fill: currentColor;
+        }
+    }
+}
+
+/////////////////// THEMES ///////////////////////
+
+
+// LIGHT //
+
+$font-color: #000;
+$player-border: $gray-90;
+$bg-color: #fff;
+$info-color: $gray-50;
+$info-label-font-color: #fff;
+$info-label-background: rgba(0,0,0,.8);
+$logo-color: #161616;
+
+body {
+    @include theme($font-color, $player-border, $bg-color, $info-label-font-color, $info-label-background, $info-color, $logo-color);
+}
+
+// DARK //
+
+$font-color-dark: #eee;
+$player-border-dark: $gray-70;
+$bg-color-dark: $gray-20;
+$info-color-dark: $gray-50;
+$info-label-font-color-dark: #eee;
+$info-label-background-dark: rgba(0,0,0,.8);
+$logo-color-dark: #fff;
+
+body.dark {
+    @include theme($font-color-dark, $player-border-dark, $bg-color-dark, $info-label-font-color-dark, $info-label-background-dark, $info-color-dark, $logo-color-dark);
+}

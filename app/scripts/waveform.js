@@ -1,19 +1,28 @@
 var waveform = (function (http, Waveform) {
-
+    
 	var self = {};
 
 
     var BAR_WIDTH = 1, BAR_PADDING = 1; //px
     var MAX_UPDATE_INTERVAL = 30; // ms
 
+    return {
+        renderWaveform: renderWaveform,
+        seek: seek,
+        waveform: getWaveform
+    }
 
-	function init() {
+    //////////////////
+
+
+	function loadWaveform() {
 		http.get('https://static-test.skiomusic.com/' + self.project.previewWaveform, addWaveform);
 	}
 
 	function addWaveform(waveformJson) {
 
 		var viewElement = document.querySelector('.waveform')
+
 		self.waveform = new Waveform(viewElement, waveformJson.samples, getWaveformOptions(waveformJson));
 	}
 
@@ -30,7 +39,7 @@ var waveform = (function (http, Waveform) {
 
     function renderWaveform(project) {
     	self.project = project;
-    	init();
+    	loadWaveform();
     }
 
     function seek(position) {
@@ -41,9 +50,4 @@ var waveform = (function (http, Waveform) {
     	return self.waveform
     }
 
-	return {
-		renderWaveform: renderWaveform,
-		seek: seek,
-		waveform: getWaveform
-	};
 })(http, Waveform);
